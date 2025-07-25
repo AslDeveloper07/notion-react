@@ -8,7 +8,7 @@ import { TbMessage } from "react-icons/tb";
 const Navbar = () => {
   return (
     <div className="flex justify-between items-center pr-4 ">
-      <div className="flex gap-0 p-2 pl-2 items-center">
+      <div className="flex gap-0 p-2 pl-2 items-center pl-15">
         <p className="text-xs  text-white  hover:bg-[#202020] rounded cursor-pointer px-2 py-[2px]">
           JavaScript
         </p>
