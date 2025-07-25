@@ -1,5 +1,6 @@
 import { BsLayoutSidebar } from "react-icons/bs"
 import { RxNotionLogo } from "react-icons/rx"
+import DashboardItems from "./DashboardItems"
 
 const Dashboard = () => {
   return (
@@ -8,6 +9,7 @@ const Dashboard = () => {
         <RxNotionLogo size={16} className="text-gray-400"  />
        <BsLayoutSidebar className="text-gray-400" />
       </div>
+      <DashboardItems/>
     </div>
   )
 }
