@@ -1,0 +1,1 @@
+export{default as JavaScripLogo} from './../assets/js.webp'
