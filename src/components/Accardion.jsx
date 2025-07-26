@@ -83,7 +83,7 @@ const AccordionItem = ({ title, children }) => {
                   contentEditable
                   placeholder="Yozish uchun joy..."
                   onKeyDown={handleEditorKeyDown}
-                  className="editable-div text-sm text-white w-full px-2 py-1 border border-gray-600 rounded outline-none"
+                  className="editable-div text-sm text-white w-full px-2 py-1  outline-none"
                   style={{
                     whiteSpace: "pre-wrap",
                     wordBreak: "break-word",
