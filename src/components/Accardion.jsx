@@ -101,7 +101,7 @@ const Accordion = () => {
         <AccordionItem title="1-dars  ">
           <AccordionItem title="JavaScript nima?">
             <AccordionItem title="JavaScript nima ?-dasturlash tili ">
-              <p className="text-sm text-gray-200 pl-12 h-fit">
+              <p className="text-sm text-gray-200  h-fit">
                 — bu asosiy skriptlash tili bo‘lib, u veb-sahifalarga dinamiklik
                 qo‘shadi. U dastlab brauzerlar uchun ishlab chiqilgan, ammo
                 hozirda Node.js orqali server tomonida ham ishlatilmoqda.
