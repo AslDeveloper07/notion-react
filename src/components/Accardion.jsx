@@ -1,45 +1,47 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BiSolidRightArrow } from "react-icons/bi";
 import { MdDragIndicator, MdPlayArrow } from "react-icons/md";
 import { GoPlus } from "react-icons/go";
 
 const AccordionItem = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dynamicContent, setDynamicContent] = useState([]);
-  const [showInput, setShowInput] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [showEditor, setShowEditor] = useState(false);
   const contentRef = useRef(null);
+  const editorRef = useRef(null);
 
   const toggleAccordion = () => setIsOpen((prev) => !prev);
 
   const handlePlusClick = () => {
-    setShowInput(true);
+    setShowEditor(true);
     setIsOpen(true);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && inputValue.trim()) {
-      setDynamicContent((prev) => [...prev, inputValue.trim()]);
-      setInputValue("");
-      setShowInput(false);
+  const handleEditorKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      const text = editorRef.current?.innerText.trim();
+      if (text) {
+        setDynamicContent((prev) => [...prev, text]);
+        editorRef.current.innerText = "";
+        setShowEditor(false);
+      }
     }
   };
 
   return (
     <div className="ml-2 pl-2 group relative">
       <div className="flex items-center gap-1 cursor-pointer">
-        <button
-          onClick={handlePlusClick}
-          title="Qo‘shish"
-        >
+        <button onClick={handlePlusClick} title="Qo‘shish">
           <GoPlus className="text-white text-2xs cursor-pointer" />
         </button>
 
-     <MdDragIndicator className="text-gray-400 text-lg cursor-grab active:cursor-grabbing" />
+        <MdDragIndicator className="text-gray-400 text-lg cursor-grab active:cursor-grabbing" />
 
-
-        <button onClick={toggleAccordion} className="flex items-center gap-2 cursor-pointer">
+        <button
+          onClick={toggleAccordion}
+          className="flex items-center gap-2 cursor-pointer"
+        >
           <motion.div
             animate={{ rotate: isOpen ? 90 : 0 }}
             transition={{ duration: 0.2 }}
@@ -63,24 +65,31 @@ const AccordionItem = ({ title, children }) => {
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden pl-4"
           >
-            <div ref={contentRef} className="py-1">
+            <div ref={contentRef} className="py-1 space-y-2">
               {children}
 
               {dynamicContent.map((item, index) => (
-                <p key={index} className="text-sm text-gray-300 ml-2">
+                <p
+                  key={index}
+                  className="text-sm text-gray-300 ml-2"
+                >
                   {item}
                 </p>
               ))}
 
-              {showInput && (
-                <input
-                  type="text"
-                  // placeholder="Matn kiriting va Enter bosing"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  className="mt-1 mb-2 w-full p-1 text-sm text-white outline-none"
-                  autoFocus
+              {showEditor && (
+                <div
+                  ref={editorRef}
+                  contentEditable
+                  placeholder="Yozish uchun joy..."
+                  onKeyDown={handleEditorKeyDown}
+                  className="editable-div text-sm text-white w-full px-2 py-1 border border-gray-600 rounded outline-none"
+                  style={{
+                    whiteSpace: "pre-wrap",
+                    wordBreak: "break-word",
+                    caretColor: "rgba(255,255,255,0.8)",
+                    minHeight: "1.5em",
+                  }}
                 />
               )}
             </div>
@@ -94,14 +103,14 @@ const AccordionItem = ({ title, children }) => {
 const Accordion = () => {
   return (
     <div
-      className="w-[700px] h-fit mx-auto mt-10  rounded-lg"
+      className="w-[700px] h-fit mx-auto mt-10 rounded-lg"
       style={{ backgroundColor: "#19191919" }}
     >
       <AccordionItem title="1-Modul(JavaScript fundamental Part-1)">
         <AccordionItem title="1-dars  ">
           <AccordionItem title="JavaScript nima?">
             <AccordionItem title="JavaScript nima ?-dasturlash tili ">
-              <p className="text-sm text-gray-200  h-fit">
+              <p className="text-sm text-gray-200 h-fit pl-2">
                 — bu asosiy skriptlash tili bo‘lib, u veb-sahifalarga dinamiklik
                 qo‘shadi. U dastlab brauzerlar uchun ishlab chiqilgan, ammo
                 hozirda Node.js orqali server tomonida ham ishlatilmoqda.
