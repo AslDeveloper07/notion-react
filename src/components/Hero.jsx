@@ -5,7 +5,7 @@ import Cover from './Cover'
 
 const Hero = () => {
   return (
-    <div className=' w-full m-auto h-[729px]'>
+    <div className=' w-full mt-0 mx-auto h-[100vh] flex flex-col' >
       <Navbar/>
       <Cover/>
       <Accordion/>

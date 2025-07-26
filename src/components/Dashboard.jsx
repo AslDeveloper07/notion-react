@@ -30,7 +30,7 @@ const Dashboard = () => {
             animate={{ width: 200, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="bg-[#202020] h-[729px] p-2  overflow-hidden"
+            className="bg-[#202020] h-[100vh] p-2  overflow-hidden"
           >
             <div className="pt-6 flex flex-col gap-2">
               <DashboardItems />

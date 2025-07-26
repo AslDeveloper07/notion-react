@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BiSolidRightArrow } from "react-icons/bi";
-import { MdDragIndicator } from "react-icons/md";
+import { MdDragIndicator, MdPlayArrow } from "react-icons/md";
 import { GoPlus } from "react-icons/go";
 
 const AccordionItem = ({ title, children }) => {
@@ -36,14 +36,15 @@ const AccordionItem = ({ title, children }) => {
           <GoPlus className="text-white text-2xs cursor-pointer" />
         </button>
 
-        <MdDragIndicator className="text-gray-400 text-lg" />
+     <MdDragIndicator className="text-gray-400 text-lg cursor-grab active:cursor-grabbing" />
 
-        <button onClick={toggleAccordion} className="flex items-center gap-2">
+
+        <button onClick={toggleAccordion} className="flex items-center gap-2 cursor-pointer">
           <motion.div
             animate={{ rotate: isOpen ? 90 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            <BiSolidRightArrow className="text-gray-300 text-sm" />
+            <MdPlayArrow className="text-gray-300 text-sm" />
           </motion.div>
           <span className="text-gray-200 text-sm text-left">{title}</span>
         </button>
@@ -93,14 +94,14 @@ const AccordionItem = ({ title, children }) => {
 const Accordion = () => {
   return (
     <div
-      className="max-w-3xl h-[300px] mx-auto mt-10 p-4 rounded-lg"
+      className="w-[700px] h-fit mx-auto mt-10  rounded-lg"
       style={{ backgroundColor: "#19191919" }}
     >
       <AccordionItem title="1-Modul(JavaScript fundamental Part-1)">
         <AccordionItem title="1-dars  ">
           <AccordionItem title="JavaScript nima?">
             <AccordionItem title="JavaScript nima ?-dasturlash tili ">
-              <p className="text-sm text-gray-200">
+              <p className="text-sm text-gray-200 pl-12 h-fit">
                 — bu asosiy skriptlash tili bo‘lib, u veb-sahifalarga dinamiklik
                 qo‘shadi. U dastlab brauzerlar uchun ishlab chiqilgan, ammo
                 hozirda Node.js orqali server tomonida ham ishlatilmoqda.
