@@ -7,6 +7,9 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import { TbSettings, TbShoppingBag, TbTrash } from "react-icons/tb";
 import { JavaScripLogo } from "../assets/assets";
+import { SiJavascript } from "react-icons/si";
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { FaReact } from "react-icons/fa";
 
 const Sidebar = ({ isOpen }) => {
   const [privateOpen, setPrivateOpen] = useState(true);
@@ -62,7 +65,7 @@ const Sidebar = ({ isOpen }) => {
 
               {/* Private Accordion */}
               <p
-                className="text-xs text-gray-500 mb-1 px-2 cursor-pointer flex items-center justify-between"
+                className="text-sm text-gray-500 mb-1 px-2 cursor-pointer flex items-center justify-between"
                 onClick={() => setPrivateOpen(!privateOpen)}
               >
                 Private
@@ -72,7 +75,7 @@ const Sidebar = ({ isOpen }) => {
                   }`}
                 />
               </p>
-              
+
               <AnimatePresence>
                 {privateOpen && (
                   <motion.div
@@ -84,19 +87,37 @@ const Sidebar = ({ isOpen }) => {
                   >
                     <div className="flex flex-col gap-1 text-gray-300 text-sm">
                       {/* JavaScript */}
-
-                       <div className="group flex items-center justify-between px-2 py-1 rounded hover:bg-[#2a2a2a] cursor-pointer">
+                      <div className="group flex items-center justify-between px-2 py-1 rounded hover:bg-[#2a2a2a] cursor-pointer">
                         {/* Left */}
                         <span className="flex items-center gap-1">
-                          {/* Arrow faqat hoverda chiqadi */}
-                          <MdKeyboardArrowRight className="hidden group-hover:inline transition-transform duration-200" />
-                          <img src={JavaScripLogo} alt="" className="w-4" />
+                          {/* Dastlab logo, hoverda > icon */}
+                          <SiJavascript className="w-4 h-4 group-hover:hidden text-yellow-400" />
+                          <MdKeyboardArrowRight className="hidden group-hover:inline w-4 h-4" />
                           JavaScript
                         </span>
+
                         {/* Right icons */}
                         <div className="hidden group-hover:flex items-center gap-2">
                           <IoMdAdd className="cursor-pointer" />
-                          <span className="cursor-pointer">⋯</span>
+                          <HiOutlineDotsHorizontal className="cursor-pointer" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-1 text-gray-300 text-sm">
+                      {/* JavaScript */}
+                      <div className="group flex items-center justify-between px-2 py-1 rounded hover:bg-[#2a2a2a] cursor-pointer">
+                        {/* Left */}
+                        <span className="flex items-center gap-1">
+                          {/* Dastlab logo, hoverda > icon */}
+                          <FaReact className="w-4 h-4 group-hover:hidden text-cyan-400" />
+                          <MdKeyboardArrowRight className="hidden group-hover:inline w-4 h-4" />
+                          JavaScript
+                        </span>
+
+                        {/* Right icons */}
+                        <div className="hidden group-hover:flex items-center gap-2">
+                          <IoMdAdd className="cursor-pointer" />
+                          <HiOutlineDotsHorizontal className="cursor-pointer" />
                         </div>
                       </div>
                     </div>
@@ -109,7 +130,7 @@ const Sidebar = ({ isOpen }) => {
 
               {/* Teamspaces Accordion */}
               <p
-                className="text-xs text-gray-500 mb-1 px-2 cursor-pointer flex items-center justify-between"
+                className="text-sm text-gray-500 mb-1 px-2 cursor-pointer flex items-center justify-between"
                 onClick={() => setTeamOpen(!teamOpen)}
               >
                 Teamspaces
