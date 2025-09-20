@@ -19,7 +19,7 @@ const App = () => {
         className="flex flex-col h-full"
       >
         <Navbar setIsOpen={setIsOpen} />
-<Hero/>
+        <Hero />
       </motion.div>
     </div>
   );
