@@ -1,46 +1,70 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 const Cover = () => {
-  const [coverImage, setCoverImage] = useState(
-    "https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1200&q=80"
-  );
+  const [cover, setCover] = useState(null);
 
-  const fileInputRef = useRef(null);
+  // component ochilganda localStorage-dan coverni olish
+  useEffect(() => {
+    const savedCover = localStorage.getItem("coverImage");
+    if (savedCover) {
+      setCover(savedCover);
+    }
+  }, []);
 
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
+  // rasmni yuklab olish va localStorage-ga saqlash
+  const handleUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setCover(reader.result);
+      localStorage.setItem("coverImage", reader.result);
+    };
+    reader.readAsDataURL(file);
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      const imageURL = URL.createObjectURL(file);
-      setCoverImage(imageURL);
-    }
+  // coverni o‘chirish
+  const handleRemove = () => {
+    setCover(null);
+    localStorage.removeItem("coverImage");
   };
 
   return (
-    <div className="relative w-full h-60 overflow-hidden">
-      <img
-        src={coverImage}
-        alt="Custom Cover"
-        className="object-cover w-full h-full transition-all duration-500"
-      />
+    <div className="w-full">
+      {/* Cover */}
+      <div className="relative w-full h-60 bg-gray-800 flex items-center justify-center overflow-hidden">
+        {cover ? (
+          <img
+            src={cover}
+            alt="Cover"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <p className="text-gray-400">No cover selected</p>
+        )}
 
-      <button
-        onClick={handleButtonClick}
-        className="absolute top-3 right-3 bg-[#191919] bg-opacity-90 text-xs text-white px-4 py-1 rounded-md shadow hover:bg-opacity-100 transition"
-      >
-        Rasmingizni tanlang
-      </button>
-
-      <input
-        type="file"
-        accept="image/*"
-        ref={fileInputRef}
-        onChange={handleFileChange}
-        className="hidden"
-      />
+        {/* Tugmalar */}
+        <div className="absolute top-2 right-2 flex gap-2">
+          <label className="bg-black/60 text-white text-xs px-2 py-1 rounded cursor-pointer hover:bg-black/80">
+            Change Cover
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleUpload}
+            />
+          </label>
+          {cover && (
+            <button
+              onClick={handleRemove}
+              className="bg-black/60 text-white text-xs px-2 py-1 rounded hover:bg-black/80"
+            >
+              Remove
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
+import { motion } from "framer-motion";
 import Hero from "./components/Hero";
-import Dashboard from "./components/Dashboard";
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
-    <div>
-      <div className="flex bg-[#191919]">
-        <Dashboard/>
-        <Hero />
-      </div>
+    <div className="h-screen bg-[#191919] text-white overflow-hidden">
+      {/* Sidebar */}
+      <Sidebar isOpen={isOpen} />
+
+      {/* Asosiy qism */}
+      <motion.div
+        animate={{ marginLeft: isOpen ? 220 : 0 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+        className="flex flex-col h-full"
+      >
+        <Navbar setIsOpen={setIsOpen} />
+<Hero/>
+      </motion.div>
     </div>
   );
 };

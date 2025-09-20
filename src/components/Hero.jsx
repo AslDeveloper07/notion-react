@@ -1,16 +1,12 @@
 import React from 'react'
-import Navbar from './Navbar'
-import Accordion from './Accardion'
-import Cover from './Cover'
+import Cover from './Cover';
 
 const Hero = () => {
-  return (
-    <div className=' w-full mt-0 mx-auto h-[100vh] flex flex-col' >
-      <Navbar/>
+   return (
+    <div className="flex-1  overflow-y-auto">
       <Cover/>
-      <Accordion/>
     </div>
-  )
+  );
 }
 
 export default Hero
