@@ -62,20 +62,20 @@ const Navbar = ({ setIsOpen }) => {
           )}
 
           {/* Private */}
-          <div className="flex items-center gap-1 hover:bg-[#202020] rounded cursor-pointer px-2 py-[2px]">
+          <div className="flex items-center gap-1  hover:bg-[#202020] rounded-md cursor-pointer px-2 py-[3px]">
             <MdLock size={12} className="text-gray-500" />
-            <span className="text-xs text-gray-400">Private</span>
-            <MdKeyboardArrowDown size={12} className="text-gray-400" />
+            <span className="text-[14px] text-gray-400">Private</span>
+            <MdKeyboardArrowDown size={13} className="text-gray-400" />
           </div>
         </div>
       </div>
 
       {/* O‘ng qism */}
-      <div className="flex items-center gap-4">
-        <p className="text-xs text-gray-500">Edited just now</p>
-        <TbMessage className="text-gray-300 hover:text-white cursor-pointer" />
-        <IoMdStarOutline className="text-gray-300 hover:text-yellow-400 cursor-pointer" />
-        <HiOutlineDotsHorizontal className="text-gray-400 hover:text-white cursor-pointer" />
+      <div className="flex items-center gap-4 py-[4px]">
+        <p className="text-sm text-gray-500">Edited just now</p>
+        <TbMessage size={20} className="text-gray-300 hover:text-white cursor-pointer" />
+        <IoMdStarOutline size={20} className="text-gray-300 hover:text-yellow-400 cursor-pointer" />
+        <HiOutlineDotsHorizontal size={20} className="text-gray-400 hover:text-white cursor-pointer" />
       </div>
     </div>
   );

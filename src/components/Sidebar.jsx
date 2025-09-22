@@ -46,15 +46,15 @@ const Sidebar = ({ isOpen }) => {
 
               {/* Main Menu */}
               <div className="flex flex-col gap-1 text-gray-300 text-sm">
-                <p className="flex items-center gap-2 px-2 py-1 rounded hover:bg-[#2a2a2a] cursor-pointer">
+                <p className="flex items-center gap-2 px-2 py-2 rounded-md hover:bg-[#2a2a2a] cursor-pointer">
                   <AiOutlineSearch size={19} />
                   <span className="text-[13px]">Search</span>
                 </p>
-                <p className="flex items-center gap-2 px-2 py-1 rounded hover:bg-[#2a2a2a] cursor-pointer">
+                <p className="flex items-center gap-2 px-2 py-2 rounded-md hover:bg-[#2a2a2a] cursor-pointer">
                   <AiOutlineHome size={19} />
                   <span className="text-[13px]">Home</span>
                 </p>
-                <p className="flex items-center gap-2 px-2 py-1 rounded hover:bg-[#2a2a2a] cursor-pointer">
+                <p className="flex items-center gap-2 px-2 py-2 rounded-md hover:bg-[#2a2a2a] cursor-pointer">
                   <RiInbox2Fill size={19} />
                   <span className="text-[13px]">Inbox</span>
                 </p>
@@ -150,7 +150,7 @@ const Sidebar = ({ isOpen }) => {
                     className="overflow-hidden"
                   >
                     <div className="flex flex-col gap-1 text-gray-300 text-sm">
-                      <p className="flex items-center gap-2 px-2 py-1 rounded hover:bg-[#2a2a2a] cursor-pointer">
+                      <p className="flex items-center gap-2 px-2 py-2 rounded-md hover:bg-[#2a2a2a] cursor-pointer">
                         🏠 ASLWEX King’s Notion HQ
                       </p>
                       <p className="px-6 py-1 hover:bg-[#2a2a2a] rounded cursor-pointer">
@@ -169,13 +169,13 @@ const Sidebar = ({ isOpen }) => {
 
               {/* Settings */}
               <div className="flex flex-col gap-1 text-gray-300 text-sm">
-                <p className="flex items-center gap-2 px-2 py-1 rounded hover:bg-[#2a2a2a] cursor-pointer">
+                <p className="flex items-center gap-2 px-2 py-2 rounded-md hover:bg-[#2a2a2a] cursor-pointer">
                   <TbSettings size={19} /> Settings
                 </p>
-                <p className="flex items-center gap-2 px-2 py-1 rounded hover:bg-[#2a2a2a] cursor-pointer">
+                <p className="flex items-center gap-2 px-2 py-2 rounded-md hover:bg-[#2a2a2a] cursor-pointer">
                   <TbShoppingBag size={19} /> Marketplace
                 </p>
-                <p className="flex items-center gap-2 px-2 py-1 rounded hover:bg-[#8c000029] hover:text-red-500 cursor-pointer">
+                <p className="flex items-center gap-2 px-2 py-2 rounded-md hover:bg-[#8c000029] hover:text-red-500 cursor-pointer">
                   <TbTrash size={19} /> Trash
                 </p>
               </div>
